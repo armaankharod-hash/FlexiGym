@@ -1,0 +1,5 @@
+{
+  "name": "ZentraFit SaaS",
+  "description": "Multi-tenant gym management platform with super admin and gym owner dashboards.",
+  "requestFramePermissions": []
+}
