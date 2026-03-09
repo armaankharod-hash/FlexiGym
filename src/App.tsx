@@ -142,8 +142,7 @@ if (error) {
 } else {
   navigate('/dashboard');
 }
-      }
-    } catch (err) {
+      } catch (err) {
       setError('Connection error');
     } finally {
       setLoading(false);
