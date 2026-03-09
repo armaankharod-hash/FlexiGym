@@ -1,5 +1,6 @@
 import { useState, useEffect, createContext, useContext } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useNavigate, Link } from 'react-router-dom';
+import { supabase } from './supabaseClient';
 import { 
   Users, 
   Dumbbell, 
@@ -130,7 +131,6 @@ const LoginPage = () => {
     setLoading(true);
     setError('');
     try {
-      import { supabase } from './supabaseClient';
 
 const { data, error } = await supabase.auth.signInWithPassword({
   email,
