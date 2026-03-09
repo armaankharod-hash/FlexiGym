@@ -130,17 +130,18 @@ const LoginPage = () => {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
-      const data = await res.json();
-      if (res.ok) {
-        login(data.token, data.user);
-        navigate(data.user.role === 'super_admin' ? '/admin' : '/dashboard');
-      } else {
-        setError(data.error);
+      import { supabase } from './supabaseClient';
+
+const { data, error } = await supabase.auth.signInWithPassword({
+  email,
+  password,
+});
+
+if (error) {
+  setError(error.message);
+} else {
+  navigate('/dashboard');
+}
       }
     } catch (err) {
       setError('Connection error');
